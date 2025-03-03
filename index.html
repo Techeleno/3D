@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Cube</title>
+    <title>3D Earth Model</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
         body, html {
@@ -18,21 +18,12 @@
             height: 100vh;
             background-color: transparent;
         }
-        .loader {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-family: Arial, sans-serif;
-        }
     </style>
 </head>
 <body>
     <model-viewer
-        src="RedCube_v1.glb"
-        alt="3D Cube"
+        src="Earth.glb"
+        alt="3D Earth model"
         auto-rotate
         rotation-per-second="30deg"
         camera-controls
@@ -42,35 +33,7 @@
         shadow-softness="0"
         stage-light-intensity="2"
         environment-intensity="1"
-        camera-orbit="0deg 75deg 105%"
-        autoplay
-        preload
-        ar
-        ar-modes="webxr scene-viewer quick-look"
-        reveal="immediate"
-        loading="eager">
-        <div class="loader" slot="poster">Loading...</div>
+        camera-orbit="0deg 75deg 105%">
     </model-viewer>
-
-    <script>
-        const modelViewer = document.querySelector('model-viewer');
-        
-        // Immediately start rotation, don't wait for full load
-        modelViewer.addEventListener('load', () => {
-            // Force autoRotate to true after load
-            modelViewer.autoRotate = true;
-        });
-        
-        // Preemptively start rotation
-        window.addEventListener('DOMContentLoaded', () => {
-            // Force rotation even before full model load
-            modelViewer.autoRotate = true;
-            
-            // Add a timer to ensure rotation is active
-            setTimeout(() => {
-                modelViewer.autoRotate = true;
-            }, 100);
-        });
-    </script>
 </body>
 </html>
